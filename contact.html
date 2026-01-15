@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<!doctype html>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact — Cyro Helifax</title>
@@ -47,19 +49,19 @@
           <h2 class="card-title">Project form</h2>
 
           <!--
-            Replace FORM_ENDPOINT with your form handler:
-            - Formspree: https://formspree.io/f/xxxxxx
-            - Netlify Forms: remove action/method and add name + netlify attributes
+            Static-site "normal email" option:
+            This form opens the visitor’s email client with a pre-filled message.
+            Note: It does NOT send automatically; the visitor clicks Send in their email app.
           -->
-          <form class="form" action="FORM_ENDPOINT" method="POST">
+          <form id="project-form" class="form" novalidate>
             <label>
               <span>Name</span>
-              <input name="name" type="text" autocomplete="name" required="">
+              <input name="name" type="text" autocomplete="name" required>
             </label>
 
             <label>
               <span>Email</span>
-              <input name="email" type="email" autocomplete="email" required="">
+              <input name="email" type="email" autocomplete="email" required>
             </label>
 
             <label>
@@ -69,8 +71,8 @@
 
             <label>
               <span>What do you need?</span>
-              <select name="package" required="">
-                <option value="" disabled="" selected="">Select an option</option>
+              <select name="package" required>
+                <option value="" disabled selected>Select an option</option>
                 <option>Starter Presence (1–3 pages)</option>
                 <option>Business Website (5–7 pages)</option>
                 <option>Brand + Web</option>
@@ -89,7 +91,7 @@
             </label>
 
             <button class="btn" type="submit">Send</button>
-            <p class="muted small">By sending, you agree to be contacted about your project.</p>
+            <p class="muted small">This will open your email app with the message filled in.</p>
           </form>
         </div>
 
@@ -106,9 +108,9 @@
 
           <div class="card section-pad-top">
             <h2 class="card-title">Prefer email?</h2>
-            
-            <p class="mono">contact@helifaxstudios.com</p>
-            
+            <p class="mono">
+              <a class="text-link" href="mailto:contact@helifaxstudios.com">contact@helifaxstudios.com</a>
+            </p>
           </div>
         </div>
       </div>
@@ -131,6 +133,55 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    (function () {
+      const TO_EMAIL = "contact@helifaxstudios.com";
+      const form = document.getElementById("project-form");
+      if (!form) return;
 
+      const enc = (s) => encodeURIComponent(String(s || "").trim());
 
-<protonpass-root-93b3 data-protonpass-role="root" data-protonpass-theme="os"></protonpass-root-93b3></body></html>
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Basic validity check
+        const name = form.elements["name"]?.value || "";
+        const email = form.elements["email"]?.value || "";
+        const pkg = form.elements["package"]?.value || "";
+
+        if (!name.trim() || !email.trim() || !pkg.trim()) {
+          // Let browser show required prompts where possible
+          form.reportValidity?.();
+          return;
+        }
+
+        const business = form.elements["business"]?.value || "";
+        const launch = form.elements["launch"]?.value || "";
+        const details = form.elements["details"]?.value || "";
+
+        const subject = `New project inquiry — ${name}${business.trim() ? " (" + business.trim() + ")" : ""}`;
+
+        const bodyLines = [
+          "New Project Inquiry",
+          "-------------------",
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Business: ${business || "(not provided)"}`,
+          `Package: ${pkg}`,
+          `Ideal launch date: ${launch || "(not provided)"}`,
+          "",
+          "Details:",
+          details || "(not provided)",
+          "",
+          "— Sent from helifaxstudios site"
+        ];
+
+        const mailto = `mailto:${TO_EMAIL}?subject=${enc(subject)}&body=${enc(bodyLines.join("\n"))}`;
+
+        // Open email client
+        window.location.href = mailto;
+      });
+    })();
+  </script>
+</body>
+</html>
