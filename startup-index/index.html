@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Links // Helifax Studios</title>
+    <style>
+        :root {
+            --bg-obsidian: #181A1F;
+            --card-dark: #21252B;
+            --input-bg: #1A1C23;
+            --accent: #A183C7;
+            --text-light: #ECEFF4;
+            --text-muted: #A0A8B7;
+            --border-glow: rgba(161, 131, 199, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header Profile Section */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Links Grid / List */
+        .links-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-card {
+            background-color: var(--card-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-card:hover {
+            background-color: var(--input-bg);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--border-glow);
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .link-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background-color: var(--bg-obsidian);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+
+        .link-text h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .link-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .link-arrow {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .link-card:hover .link-arrow {
+            transform: translateX(4px);
+            color: var(--accent);
+        }
+
+        /* Footer Back Link */
+        .back-home {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-home:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="profile-header">
+            <h1 class="profile-title">HELIFAX HUB</h1>
+            <p class="profile-subtitle">Quick Navigation Directory</p>
+        </div>
+
+        <!-- Links Hub -->
+        <div class="links-list">
+            
+            <!-- Discord -->
+            <a href="https://discord.com" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">💬</div>
+                    <div class="link-text">
+                        <h3>Discord</h3>
+                        <p>Community channels & chat</p>
+                    </div>
+                </div>
+                <div class="link-arrow">&rarr;</div>
+            </a>
+
+            <!-- Roblox -->
+            <a href="https://www.roblox.com" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">🎮</div>
+                    <div class="link-text">
+                        <h3>Roblox</h3>
+                        <p>Profiles, games & dev studio</p>
+                    </div>
+                </div>
+                <div class="link-arrow">&rarr;</div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">📸</div>
+                    <div class="link-text">
+                        <h3>Instagram</h3>
+                        <p>Visual feeds & updates</p>
+                    </div>
+                </div>
+                <div class="link-arrow">&rarr;</div>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">▶️</div>
+                    <div class="link-text">
+                        <h3>YouTube</h3>
+                        <p>Video platform & media</p>
+                    </div>
+                </div>
+                <div class="link-arrow">&rarr;</div>
+            </a>
+
+            <!-- Everythingmoe -->
+            <a href="https://everythingmoe.com" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">✨</div>
+                    <div class="link-text">
+                        <h3>Everythingmoe</h3>
+                        <p>Curated otaku culture & web index</p>
+                    </div>
+                </div>
+                <div class="link-arrow">&rarr;</div>
+            </a>
+
+            <!-- Gemini -->
+            <a href="https://gemini.google.com" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">🤖</div>
+                    <div class="link-text">
+                        <h3>Gemini</h3>
+                        <p>AI assistant workspace</p>
+                    </div>
+                </div>
+                <div class="link-arrow">&rarr;</div>
+            </a>
+
+            <!-- Blank Google Page -->
+            <a href="https://www.google.com" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">🌐</div>
+                    <div class="link-text">
+                        <h3>Google (Blank)</h3>
+                        <p>Clean search workspace</p>
+                    </div>
+                </div>
+                <div class="link-arrow">&rarr;</div>
+            </a>
+
+        </div>
+
+        <!-- Back Link -->
+        <a href="/" class="back-home">&larr; Return to Main Site</a>
+    </div>
+
+</body>
+</html>
